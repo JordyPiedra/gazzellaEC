@@ -19,15 +19,15 @@ class CreateDetallesTable extends Migration
             $table->integer('producto_id')->unsigned();
             $table->integer('cantidad')->unsigned();
             $table->decimal('preciounitario',6,2);
-            $table->decimal('subtotal',6,2);
+            $table->decimal('subtotal',6,2)->default(0);
             $table->decimal('iva',6,2);
-            $table->decimal('totaliva',6,2);
-            $table->decimal('total',6,2);
+            $table->decimal('totaliva',6,2)->default(0);
+            $table->decimal('total',6,2)->default(0);
             $table->timestamps();
 
             $table->foreign('pedido_id')->references('id')->on('pedidos');
             $table->foreign('producto_id')->references('id')->on('productos');
-
+            $table->softDeletes();
         });
     }
 

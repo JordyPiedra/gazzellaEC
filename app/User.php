@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $table='usuarios';
     use Notifiable;
 
     const USUARIO_VERIFICADO='1';
@@ -20,7 +22,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $table='usuarios';
+    
     protected $fillable = [
         'nombre1', 
         'nombre2', 
@@ -54,9 +56,13 @@ class User extends Authenticatable
     }
 
     public function verificacionAdmin(){
-        return $this->admin==User::USUARIO_ADMINISTRADOR;
+        if ($this->tipo==User::USUARIO_ADMINISTRADOR)
+        return true;
+        else
+        return false;
     }
     public static function generarVerificacionToken(){
         return str_random(40);
     }
+    
 }

@@ -17,7 +17,11 @@ class CreateCategoriasTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('descripcion',1000);
+            $table->integer('categoria_padre')->nullable()->unsigned();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('categoria_padre')->references('id')->on('categorias');
         });
     }
 

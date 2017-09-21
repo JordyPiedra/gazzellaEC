@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('tipo')->default(User::USUARIO_REGULAR);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
             
         });
     }

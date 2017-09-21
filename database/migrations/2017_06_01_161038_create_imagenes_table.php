@@ -19,7 +19,7 @@ class CreateImagenesTable extends Migration
             $table->string('nombre');
             $table->string('patch');
             $table->timestamps();
-
+            $table->softDeletes();
             $table->foreign('producto_id')->references('id')->on('productos');
         });
     }

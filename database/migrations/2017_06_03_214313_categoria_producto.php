@@ -14,9 +14,11 @@ class CategoriaProducto extends Migration
     public function up()
     {
         Schema::create('categoria_producto', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('categoria_id')->unsigned();
             $table->integer('producto_id')->unsigned();
-            
+            $table->softDeletes();
+             $table->timestamps();
             $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->foreign('producto_id')->references('id')->on('productos');
         });

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Producto;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\OpcionesPageController;
+use App\Producto;
 
-class ProductoController extends Controller
+class ProductoController extends OpcionesPageController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+       
     }
 
     /**
@@ -44,9 +45,17 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( $id)
     {
-        //
+        $producto = Producto::findOrFail($id);
+          return view('cliente.productos',  
+          [
+              'producto' => $producto,
+              'navbar' => $this->getNavBarOptions()
+          ]
+         
+          
+          );
     }
 
     /**
@@ -58,6 +67,7 @@ class ProductoController extends Controller
     public function edit($id)
     {
         //
+       
     }
 
     /**

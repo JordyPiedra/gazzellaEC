@@ -21,6 +21,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'apellido1' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
+        'direccion' => $faker->paragraph(1),
+        'telefono1' => $faker->phoneNumber,
         'remember_token' => str_random(10),
         'verificado' => $verificado= $faker->randomElement([User::USUARIO_VERIFICADO, User::USUARIO_NO_VERIFICADO]),
         'verificacion_token' => $verificado == User::USUARIO_VERIFICADO? null : User::generarVerificacionToken(),
@@ -33,7 +35,8 @@ $factory->define(App\Categoria::class, function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->word,
         'descripcion' => $faker->paragraph(1),
-      
+        'categoria_padre' => $faker->numberBetween(1,26),
+        
     ];
 });
 
@@ -41,6 +44,7 @@ $factory->define(App\Producto::class, function (Faker\Generator $faker) {
 
     return [
         'nombre' => $faker->word,
+        'talla' => $faker->word,
         'descripcion' => $faker->paragraph(1),
         'stock' => $faker->numberBetween(1,10),
         'estado' => $faker->randomElement([Producto::PRODUCTO_DISPONIBLE,Producto::PRODUCTO_NO_DISPONIBLE]),
