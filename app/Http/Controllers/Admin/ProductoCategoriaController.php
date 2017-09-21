@@ -23,7 +23,6 @@ class ProductoCategoriaController extends Controller
               'producto'=>$producto,
               'categorias' => Categoria::all(),
           ]
-         
           
           );
     }
