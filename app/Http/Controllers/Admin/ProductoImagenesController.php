@@ -96,6 +96,7 @@ class ProductoImagenesController extends Controller
      */
     public function destroy(Producto $producto,Imagenes $imagene)
     {
+        dd($imagene);
        $imagene->delete();
      //dd($producto->id);
     // header ("Location: ".'/adminproductos/'.$producto->id);
