@@ -62,7 +62,7 @@ class AdminProductosController extends Controller
             'precio_anterior' => 'numeric|nullable',
             'iva' => 'numeric|required',
         ];
-        $this->validate($request,$rules);
+        //$this->validate($request,$rules);
         
         $campos=$request->only([
             'nombre' ,
@@ -80,7 +80,7 @@ class AdminProductosController extends Controller
 
         $producto=Producto::create($campos);
         
-        return redirect('/adminproductos/'.$producto->id);
+      //  return redirect('/adminproductos/'.$producto->id);
 
     }
 
